@@ -27,6 +27,7 @@ ggplot(data = exam_data,
        aes(x = RACE)) +
   geom_bar()
 ```
+<<<<<<< HEAD
 
 ## R Graphics VS ggplot
 
@@ -210,3 +211,36 @@ ggplot(data=exam_data,
   coord_flip() +
   theme_minimal()
 ```
+=======
+=======
+---
+title: "Hand-on Exercise 1"
+author: "Chenbin Zhang"
+---
+
+# Getting Started
+
+## Install and launching R packages
+
+The code chunk below uses p_load() of pacman package to check if tidyverse package are installed in the compute. if the are, then they will be lauched into R.
+
+```{r}
+pacman::p_load(tidyverse)
+```
+
+## Importing the data
+
+```{r}
+exam_data <- read_csv("data/Exam_data.csv")
+```
+
+# Plotting a simple bar chart
+
+```{r}
+#| echo: false
+ggplot(data = exam_data,
+       aes(x = RACE)) +
+  geom_bar()
+```
+>>>>>>> 0ed2fa3e4f687bdc3fcd0ec1e47b7b009dda9498
+>>>>>>> e622236fbdd6a7f3ff49991edac087002f549494

@@ -1,0 +1,16 @@
+{
+  "hash": "eb9ecc5596432a0aa2e1a82ea883f3aa",
+  "result": {
+    "markdown": "---\ntitle: \"Hand-on Exercise 1\"\nauthor: \"Chenbin Zhang\"\n---\n\n\n# Getting Started\n\n## Install and launching R packages\n\nThe code chunk below uses p_load() of pacman package to check if tidyverse package are installed in the compute. if the are, then they will be lauched into R.\n\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(tidyverse)\n```\n:::\n\n\n## Importing the data\n\n\n::: {.cell}\n\n```{.r .cell-code}\nexam_data <- read_csv(\"data/Exam_data.csv\")\n```\n\n::: {.cell-output .cell-output-stderr}\n```\nRows: 322 Columns: 7\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (4): ID, CLASS, GENDER, RACE\ndbl (3): ENGLISH, MATHS, SCIENCE\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n```\n:::\n:::\n\n\n# Plotting a simple bar chart\n\n\n::: {.cell}\n::: {.cell-output-display}\n![](Hands-on_EX01_files/figure-html/unnamed-chunk-3-1.png){width=672}\n:::\n:::\n",
+    "supporting": [
+      "Hands-on_EX01_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -1,13 +1,17 @@
-<<<<<<< HEAD
+---
+title: "ISS608.VAA"
+---
+
+# Welcome to ISSS608 **Visual Analytics and Applications**. In this website,you will find my coursework prepared for this course.
+
 ---
 title: "ISS608.VAA"
 ---
 
 Welcome to ISSS608 **Visual Analytics and Applications**. In this website,you will find my coursework prepared for this course.
-=======
----
-title: "ISS608.VAA"
----
 
-Welcome to ISSS608 **Visual Analytics and Applications**. In this website,you will find my coursework prepared for this course.
->>>>>>> fc103a2ac0fea98466b1efb689b359f00a4ac52b
+## Welcome to my page.
+
+# Index:
+
+Hands-on Exercise 1 [Click here](Hand-on%20EX/Hand-on-Ex01/Hands-on_EX01.qmd)

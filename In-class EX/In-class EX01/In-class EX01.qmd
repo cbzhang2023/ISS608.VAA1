@@ -1,0 +1,13 @@
+---
+title: "In-class Ex01"
+author: "Chenbin Zhang"
+---
+
+```{r}
+pacman::p_load(tidyverse)
+```
+
+```{r}
+df <- read.csv("data/realis2019.csv")
+head(df, 10)
+```

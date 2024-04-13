@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Chenbin Zhang">
 
-<title>ISSS608-VAA - ISS608.VAA</title>
+<title>ISSS608-VAA - In-class Ex01</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,25 +21,59 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,7 +96,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed">
@@ -71,7 +106,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg navbar-dark ">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">ISSS608-VAA</span>
     </a>
   </div>
@@ -87,7 +122,7 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-hands-on-exercise">    
         <li>
-    <a class="dropdown-item" href="./Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html" rel="" target="">
+    <a class="dropdown-item" href="../../Hands-on_Ex/Hands-on_Ex01/Hands-on_Ex01.html" rel="" target="">
  <span class="dropdown-text">Hands-on Exercise 1</span></a>
   </li>  
     </ul>
@@ -95,11 +130,11 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" rel="" target="" aria-current="page">
+    <a class="nav-link" href="../../index.html" rel="" target="">
  <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html" rel="" target="">
+    <a class="nav-link" href="../../about.html" rel="" target="">
  <span class="menu-text">About</span></a>
   </li>  
 </ul>
@@ -114,30 +149,26 @@ ul.task-list li input[type="checkbox"] {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#welcome-to-isss608-visual-analytics-and-applications.-in-this-websiteyou-will-find-my-coursework-prepared-for-this-course." id="toc-welcome-to-isss608-visual-analytics-and-applications.-in-this-websiteyou-will-find-my-coursework-prepared-for-this-course." class="nav-link active" data-scroll-target="#welcome-to-isss608-visual-analytics-and-applications.-in-this-websiteyou-will-find-my-coursework-prepared-for-this-course.">Welcome to ISSS608 <strong>Visual Analytics and Applications</strong>. In this website,you will find my coursework prepared for this course.</a>
-  <ul class="collapse">
-  <li><a href="#welcome-to-my-page." id="toc-welcome-to-my-page." class="nav-link" data-scroll-target="#welcome-to-my-page.">Welcome to my page.</a></li>
-  </ul></li>
-  <li><a href="#index" id="toc-index" class="nav-link" data-scroll-target="#index">Index:</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">ISS608.VAA</h1>
+<h1 class="title">In-class Ex01</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Chenbin Zhang </p>
+          </div>
+  </div>
     
   
     
@@ -146,20 +177,83 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="welcome-to-isss608-visual-analytics-and-applications.-in-this-websiteyou-will-find-my-coursework-prepared-for-this-course." class="level1">
-<h1>Welcome to ISSS608 <strong>Visual Analytics and Applications</strong>. In this website,you will find my coursework prepared for this course.</h1>
-<p>Welcome to ISSS608 <strong>Visual Analytics and Applications</strong>. In this website,you will find my coursework prepared for this course.</p>
-<section id="welcome-to-my-page." class="level2">
-<h2 class="anchored" data-anchor-id="welcome-to-my-page.">Welcome to my page.</h2>
-</section>
-</section>
-<section id="index" class="level1">
-<h1>Index:</h1>
-<p>Hands-on Exercise 1 <a href="./Hand-on EX/Hand-on-Ex01/Hands-on_EX01.html">Click here</a></p>
-<p>In-class Exercise 1 <a href="./In-class EX/In-class EX01/In-class EX01.html">Click here</a></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/realis2019.csv"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(df, <span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>               Project.Name                        Address No..of.Units
+1               PEIRCE VIEW 557 Upper Thomson Road  #02-12            1
+2              FLORIDA PARK               54 Sunrise Drive            1
+3              BULLION PARK        164 Lentor Loop  #03-02            1
+4              CASTLE GREEN  483 Yio Chu Kang Road  #07-03            1
+5              HAPPY ESTATE             36 Thomson Heights            1
+6  TEACHER'S HOUSING ESTATE              148 Tagore Avenue            1
+7              THE PANORAMA 20 Ang Mo Kio Avenue 2  #05-40            1
+8              THE PANORAMA 16 Ang Mo Kio Avenue 2  #12-20            1
+9          CHIP THYE GARDEN         8 Yio Chu Kang Gardens            1
+10 TEACHER'S HOUSING ESTATE             16 Kalidasa Avenue            1
+   Area..sqm. Type.of.Area Transacted.Price.... Nett.Price...
+1         113       Strata               840000             -
+2         312         Land              3040000             -
+3          75       Strata               860000             -
+4         107       Strata              1000000             -
+5         687         Land              7000000             -
+6         228         Land              2880000             -
+7          94       Strata              1510000             -
+8          42       Strata               710000             -
+9         207         Land              2800000             -
+10        232         Land              2300000             -
+   Unit.Price....psm. Unit.Price....psf. Sale.Date       Property.Type
+1                7434                691 10-Jan-19         Condominium
+2                9737                905 10-Jan-19 Semi-Detached House
+3               11467               1065  8-Jan-19         Condominium
+4                9346                868  3-Jan-19         Condominium
+5               10183                946  2-Jan-19 Semi-Detached House
+6               12659               1176 11-Feb-19       Terrace House
+7               16064               1492  8-Feb-19         Condominium
+8               16905               1570  8-Feb-19         Condominium
+9               13500               1254  8-Feb-19       Terrace House
+10               9935                923  8-Feb-19       Terrace House
+                    Tenure Completion.Date Type.of.Sale
+1                 Freehold            1996       Resale
+2                 Freehold            1989       Resale
+3                 Freehold            1993       Resale
+4   99 Yrs From 01/12/1993            1997       Resale
+5                 Freehold            1984       Resale
+6  999 Yrs From 02/12/1885         Unknown       Resale
+7   99 Yrs From 08/04/2013            2017       Resale
+8   99 Yrs From 08/04/2013            2017       Resale
+9                 Freehold            1981       Resale
+10 999 Yrs From 02/12/1885         Unknown       Resale
+   Purchaser.Address.Indicator Postal.District Postal.Sector Postal.Code
+1                      Private              20            57      574418
+2                      Private              28            80      806557
+3                      Private              26            78      789096
+4                      Private              26            78      787057
+5                      Private              20            57      574861
+6                      Private              26            78      787738
+7                          HDB              20            56      567701
+8                      Private              20            56      567699
+9                          HDB              20            56      568058
+10                     Private              26            78      789395
+     Planning.Region Planning.Area
+1  North East Region    Ang Mo Kio
+2  North East Region    Ang Mo Kio
+3  North East Region    Ang Mo Kio
+4  North East Region    Ang Mo Kio
+5  North East Region    Ang Mo Kio
+6  North East Region    Ang Mo Kio
+7  North East Region    Ang Mo Kio
+8  North East Region    Ang Mo Kio
+9  North East Region    Ang Mo Kio
+10 North East Region    Ang Mo Kio</code></pre>
+</div>
+</div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

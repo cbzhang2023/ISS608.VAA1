@@ -1,6 +1,12 @@
 [
   {
-<<<<<<< HEAD
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ISS608.VAA",
+    "section": "",
+    "text": "Welcome to ISSS608 Visual Analytics and Applications. In this website,you will find my coursework prepared for this course."
+  },
+  {
     "objectID": "Hand-on EX/Hand-on-Ex01/Hands-on_EX01.html",
     "href": "Hand-on EX/Hand-on-Ex01/Hands-on_EX01.html",
     "title": "Hand-on Exercise 1",
@@ -27,12 +33,19 @@
     "title": "Hand-on Exercise 1",
     "section": "R Graphics VS ggplot",
     "text": "R Graphics VS ggplot\n\nexam_data$MATHS &lt;- as.numeric(as.character(exam_data$MATHS))\n\nWarning: NAs introduced by coercion\n\nggplot(data=exam_data, aes(x = MATHS)) +\n  geom_histogram(bins=10, \n                 boundary = 100,\n                 color=\"black\", \n                 fill=\"grey\") +\n  ggtitle(\"Distribution of Maths scores\")\n\nWarning: Removed 6 rows containing non-finite outside the scale range\n(`stat_bin()`)."
-=======
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "ISS608.VAA",
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "Welcome to ISSS608 Visual Analytics and Applications. In this website,you will find my coursework prepared for this course."
->>>>>>> 38d3267cbb7d27af52744e25f3f68b74feeeefc1
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "In-class EX/In-class EX01/In-class EX01.html",
+    "href": "In-class EX/In-class EX01/In-class EX01.html",
+    "title": "In-class Ex01",
+    "section": "",
+    "text": "pacman::p_load(tidyverse)\n\n\ndf &lt;- read.csv(\"data/realis2019.csv\")\nhead(df, 10)\n\n               Project.Name                        Address No..of.Units\n1               PEIRCE VIEW 557 Upper Thomson Road  #02-12            1\n2              FLORIDA PARK               54 Sunrise Drive            1\n3              BULLION PARK        164 Lentor Loop  #03-02            1\n4              CASTLE GREEN  483 Yio Chu Kang Road  #07-03            1\n5              HAPPY ESTATE             36 Thomson Heights            1\n6  TEACHER'S HOUSING ESTATE              148 Tagore Avenue            1\n7              THE PANORAMA 20 Ang Mo Kio Avenue 2  #05-40            1\n8              THE PANORAMA 16 Ang Mo Kio Avenue 2  #12-20            1\n9          CHIP THYE GARDEN         8 Yio Chu Kang Gardens            1\n10 TEACHER'S HOUSING ESTATE             16 Kalidasa Avenue            1\n   Area..sqm. Type.of.Area Transacted.Price.... Nett.Price...\n1         113       Strata               840000             -\n2         312         Land              3040000             -\n3          75       Strata               860000             -\n4         107       Strata              1000000             -\n5         687         Land              7000000             -\n6         228         Land              2880000             -\n7          94       Strata              1510000             -\n8          42       Strata               710000             -\n9         207         Land              2800000             -\n10        232         Land              2300000             -\n   Unit.Price....psm. Unit.Price....psf. Sale.Date       Property.Type\n1                7434                691 10-Jan-19         Condominium\n2                9737                905 10-Jan-19 Semi-Detached House\n3               11467               1065  8-Jan-19         Condominium\n4                9346                868  3-Jan-19         Condominium\n5               10183                946  2-Jan-19 Semi-Detached House\n6               12659               1176 11-Feb-19       Terrace House\n7               16064               1492  8-Feb-19         Condominium\n8               16905               1570  8-Feb-19         Condominium\n9               13500               1254  8-Feb-19       Terrace House\n10               9935                923  8-Feb-19       Terrace House\n                    Tenure Completion.Date Type.of.Sale\n1                 Freehold            1996       Resale\n2                 Freehold            1989       Resale\n3                 Freehold            1993       Resale\n4   99 Yrs From 01/12/1993            1997       Resale\n5                 Freehold            1984       Resale\n6  999 Yrs From 02/12/1885         Unknown       Resale\n7   99 Yrs From 08/04/2013            2017       Resale\n8   99 Yrs From 08/04/2013            2017       Resale\n9                 Freehold            1981       Resale\n10 999 Yrs From 02/12/1885         Unknown       Resale\n   Purchaser.Address.Indicator Postal.District Postal.Sector Postal.Code\n1                      Private              20            57      574418\n2                      Private              28            80      806557\n3                      Private              26            78      789096\n4                      Private              26            78      787057\n5                      Private              20            57      574861\n6                      Private              26            78      787738\n7                          HDB              20            56      567701\n8                      Private              20            56      567699\n9                          HDB              20            56      568058\n10                     Private              26            78      789395\n     Planning.Region Planning.Area\n1  North East Region    Ang Mo Kio\n2  North East Region    Ang Mo Kio\n3  North East Region    Ang Mo Kio\n4  North East Region    Ang Mo Kio\n5  North East Region    Ang Mo Kio\n6  North East Region    Ang Mo Kio\n7  North East Region    Ang Mo Kio\n8  North East Region    Ang Mo Kio\n9  North East Region    Ang Mo Kio\n10 North East Region    Ang Mo Kio"
   }
 ]

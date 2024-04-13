@@ -1,5 +1,6 @@
 [
   {
+<<<<<<< HEAD
     "objectID": "Hand-on EX/Hand-on-Ex01/Hands-on_EX01.html",
     "href": "Hand-on EX/Hand-on-Ex01/Hands-on_EX01.html",
     "title": "Hand-on Exercise 1",
@@ -26,5 +27,12 @@
     "title": "Hand-on Exercise 1",
     "section": "R Graphics VS ggplot",
     "text": "R Graphics VS ggplot\n\nexam_data$MATHS &lt;- as.numeric(as.character(exam_data$MATHS))\n\nWarning: NAs introduced by coercion\n\nggplot(data=exam_data, aes(x = MATHS)) +\n  geom_histogram(bins=10, \n                 boundary = 100,\n                 color=\"black\", \n                 fill=\"grey\") +\n  ggtitle(\"Distribution of Maths scores\")\n\nWarning: Removed 6 rows containing non-finite outside the scale range\n(`stat_bin()`)."
+=======
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "ISS608.VAA",
+    "section": "",
+    "text": "Welcome to ISSS608 Visual Analytics and Applications. In this website,you will find my coursework prepared for this course."
+>>>>>>> 38d3267cbb7d27af52744e25f3f68b74feeeefc1
   }
 ]

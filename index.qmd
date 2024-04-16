@@ -16,4 +16,6 @@ Welcome to ISSS608 **Visual Analytics and Applications**. In this website,you wi
 
 Hands-on Exercise 1 [Click here](Hand-on%20EX/Hand-on-Ex01/Hands-on_EX01.qmd)
 
+Hands-on Exercise 2 [Click here](Hand-on%20EX/Hand-on-Ex02/Hands-on_EX02.qmd)
+
 In-class Exercise 1 [Click here](In-class%20EX/In-class%20EX01/In-class%20EX01.qmd)

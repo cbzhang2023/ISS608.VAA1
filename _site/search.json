@@ -54,5 +54,96 @@
     "title": "In-class Ex01",
     "section": "",
     "text": "In the code chunk below, ‘p_load()’ of pacman package is used to load tidyverse family of package\n\npacman::p_load(tidyverse)\n\n\nrealis &lt;-read.csv(\"data/realis2019.csv\")\nhead(realis, 10)\n\n               Project.Name                        Address No..of.Units\n1               PEIRCE VIEW 557 Upper Thomson Road  #02-12            1\n2              FLORIDA PARK               54 Sunrise Drive            1\n3              BULLION PARK        164 Lentor Loop  #03-02            1\n4              CASTLE GREEN  483 Yio Chu Kang Road  #07-03            1\n5              HAPPY ESTATE             36 Thomson Heights            1\n6  TEACHER'S HOUSING ESTATE              148 Tagore Avenue            1\n7              THE PANORAMA 20 Ang Mo Kio Avenue 2  #05-40            1\n8              THE PANORAMA 16 Ang Mo Kio Avenue 2  #12-20            1\n9          CHIP THYE GARDEN         8 Yio Chu Kang Gardens            1\n10 TEACHER'S HOUSING ESTATE             16 Kalidasa Avenue            1\n   Area..sqm. Type.of.Area Transacted.Price.... Nett.Price...\n1         113       Strata               840000             -\n2         312         Land              3040000             -\n3          75       Strata               860000             -\n4         107       Strata              1000000             -\n5         687         Land              7000000             -\n6         228         Land              2880000             -\n7          94       Strata              1510000             -\n8          42       Strata               710000             -\n9         207         Land              2800000             -\n10        232         Land              2300000             -\n   Unit.Price....psm. Unit.Price....psf. Sale.Date       Property.Type\n1                7434                691 10-Jan-19         Condominium\n2                9737                905 10-Jan-19 Semi-Detached House\n3               11467               1065  8-Jan-19         Condominium\n4                9346                868  3-Jan-19         Condominium\n5               10183                946  2-Jan-19 Semi-Detached House\n6               12659               1176 11-Feb-19       Terrace House\n7               16064               1492  8-Feb-19         Condominium\n8               16905               1570  8-Feb-19         Condominium\n9               13500               1254  8-Feb-19       Terrace House\n10               9935                923  8-Feb-19       Terrace House\n                    Tenure Completion.Date Type.of.Sale\n1                 Freehold            1996       Resale\n2                 Freehold            1989       Resale\n3                 Freehold            1993       Resale\n4   99 Yrs From 01/12/1993            1997       Resale\n5                 Freehold            1984       Resale\n6  999 Yrs From 02/12/1885         Unknown       Resale\n7   99 Yrs From 08/04/2013            2017       Resale\n8   99 Yrs From 08/04/2013            2017       Resale\n9                 Freehold            1981       Resale\n10 999 Yrs From 02/12/1885         Unknown       Resale\n   Purchaser.Address.Indicator Postal.District Postal.Sector Postal.Code\n1                      Private              20            57      574418\n2                      Private              28            80      806557\n3                      Private              26            78      789096\n4                      Private              26            78      787057\n5                      Private              20            57      574861\n6                      Private              26            78      787738\n7                          HDB              20            56      567701\n8                      Private              20            56      567699\n9                          HDB              20            56      568058\n10                     Private              26            78      789395\n     Planning.Region Planning.Area\n1  North East Region    Ang Mo Kio\n2  North East Region    Ang Mo Kio\n3  North East Region    Ang Mo Kio\n4  North East Region    Ang Mo Kio\n5  North East Region    Ang Mo Kio\n6  North East Region    Ang Mo Kio\n7  North East Region    Ang Mo Kio\n8  North East Region    Ang Mo Kio\n9  North East Region    Ang Mo Kio\n10 North East Region    Ang Mo Kio\n\n\n\nrealis &lt;-read_csv(\"data/realis2019.csv\")\n\n\nggplot(data = realis,\n       aes(x = 'Unit price($ psm)'))"
+  },
+  {
+    "objectID": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html",
+    "href": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html",
+    "title": "Hand-on_EX02",
+    "section": "",
+    "text": "In this chapter, you will be introduced to several ggplot2 extensions for creating more elegant and effective statistical graphics. By the end of this exercise, you will be able to:\ncontrol the placement of annotation on a graph by using functions provided in ggrepel package, create professional publication quality figure by using functions provided in ggthemes and hrbrthemes packages, plot composite figure by combining ggplot2 graphs by using patchwork package."
+  },
+  {
+    "objectID": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#installing-and-loading-the-required-libraries",
+    "href": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#installing-and-loading-the-required-libraries",
+    "title": "Hand-on_EX02",
+    "section": "2.2.1 Installing and loading the required libraries",
+    "text": "2.2.1 Installing and loading the required libraries\n\npacman::p_load(ggrepel, patchwork, \n               ggthemes, hrbrthemes,\n               tidyverse)"
+  },
+  {
+    "objectID": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#importing-data",
+    "href": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#importing-data",
+    "title": "Hand-on_EX02",
+    "section": "2.2.2 Importing data",
+    "text": "2.2.2 Importing data\n\nexam_data &lt;- read_csv(\"data/Exam_data.csv\")\n\n2.3 Beyond ggplot2 Annotation: ggrepel\n\nggplot(data=exam_data, \n       aes(x= MATHS, \n           y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5) +  \n  geom_label(aes(label = ID), \n             hjust = .5, \n             vjust = -.5) +\n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")"
+  },
+  {
+    "objectID": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#working-with-ggrepel",
+    "href": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#working-with-ggrepel",
+    "title": "Hand-on_EX02",
+    "section": "2.3.1 Working with ggrepel",
+    "text": "2.3.1 Working with ggrepel\n\nggplot(data=exam_data, \n       aes(x= MATHS, \n           y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5) +  \n  geom_label_repel(aes(label = ID), \n                   fontface = \"bold\") +\n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")"
+  },
+  {
+    "objectID": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#working-with-ggtheme-package",
+    "href": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#working-with-ggtheme-package",
+    "title": "Hand-on_EX02",
+    "section": "2.4.1 Working with ggtheme package",
+    "text": "2.4.1 Working with ggtheme package\n\nggplot(data=exam_data, \n             aes(x = MATHS)) +\n  geom_histogram(bins=20, \n                 boundary = 100,\n                 color=\"grey25\", \n                 fill=\"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_economist()"
+  },
+  {
+    "objectID": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#working-with-hrbthems-package",
+    "href": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#working-with-hrbthems-package",
+    "title": "Hand-on_EX02",
+    "section": "2.4.2 Working with hrbthems package",
+    "text": "2.4.2 Working with hrbthems package\n\nggplot(data=exam_data, \n             aes(x = MATHS)) +\n  geom_histogram(bins=20, \n                 boundary = 100,\n                 color=\"grey25\", \n                 fill=\"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_ipsum()\n\n\n\n\nThe second goal centers around productivity for a production workflow. In fact, this “production workflow” is the context for where the elements of hrbrthemes should be used. Consult this vignette to learn more.\n\nggplot(data=exam_data, \n             aes(x = MATHS)) +\n  geom_histogram(bins=20, \n                 boundary = 100,\n                 color=\"grey25\", \n                 fill=\"grey90\") +\n  ggtitle(\"Distribution of Maths scores\") +\n  theme_ipsum(axis_title_size = 18,\n              base_size = 15,\n              grid = \"Y\")"
+  },
+  {
+    "objectID": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#beyond-single-graph",
+    "href": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#beyond-single-graph",
+    "title": "Hand-on_EX02",
+    "section": "2.5 Beyond Single Graph",
+    "text": "2.5 Beyond Single Graph\n\np1 &lt;- ggplot(data=exam_data, \n             aes(x = MATHS)) +\n  geom_histogram(bins=20, \n                 boundary = 100,\n                 color=\"grey25\", \n                 fill=\"grey90\") + \n  coord_cartesian(xlim=c(0,100)) +\n  ggtitle(\"Distribution of Maths scores\")\nprint(p1)\n\n\n\n\nNext\n\nprint(class(exam_data$ENGLISH))\n\n[1] \"character\"\n\nif(is.factor(exam_data$ENGLISH) || is.character(exam_data$ENGLISH)) {\n  exam_data$ENGLISH &lt;- as.numeric(as.character(exam_data$ENGLISH))\n}\n\np2 &lt;- ggplot(data=exam_data, aes(x = ENGLISH)) +\n  geom_histogram(bins=20, boundary = 100, color=\"grey25\", fill=\"grey90\") +\n  coord_cartesian(xlim=c(0, 100)) +\n  ggtitle(\"Distribution of English scores\")\nprint(p2)\n\n\n\n\nLastly, we will draw a scatterplot for English score versus Maths score by as shown below\n\np3 &lt;- ggplot(data=exam_data, \n             aes(x= MATHS, \n                 y=ENGLISH)) +\n  geom_point() +\n  geom_smooth(method=lm, \n              size=0.5) +  \n  coord_cartesian(xlim=c(0,100),\n                  ylim=c(0,100)) +\n  ggtitle(\"English scores versus Maths scores for Primary 3\")\nprint(p3)"
+  },
+  {
+    "objectID": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#creating-composite-graphics-pathwork-methods",
+    "href": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#creating-composite-graphics-pathwork-methods",
+    "title": "Hand-on_EX02",
+    "section": "2.5.1 Creating Composite Graphics: pathwork methods",
+    "text": "2.5.1 Creating Composite Graphics: pathwork methods\nThere are several ggplot2 extension’s functions support the needs to prepare composite figure by combining several graphs such as grid.arrange() of gridExtra package and plot_grid() of cowplot package. In this section, I am going to shared with you an ggplot2 extension called patchwork which is specially designed for combining separate ggplot2 graphs into a single figure.\nPatchwork package has a very simple syntax where we can create layouts super easily. Here’s the general syntax that combines:\nTwo-Column Layout using the Plus Sign +. Parenthesis () to create a subplot group. Two-Row Layout using the Division Sign /"
+  },
+  {
+    "objectID": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#combining-two-ggplot2-graphs",
+    "href": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#combining-two-ggplot2-graphs",
+    "title": "Hand-on_EX02",
+    "section": "2.5.2 Combining two ggplot2 graphs",
+    "text": "2.5.2 Combining two ggplot2 graphs\n\np1 + p2"
+  },
+  {
+    "objectID": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#combining-three-ggplot2-graphs",
+    "href": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#combining-three-ggplot2-graphs",
+    "title": "Hand-on_EX02",
+    "section": "2.5.3 Combining three ggplot2 graphs",
+    "text": "2.5.3 Combining three ggplot2 graphs\n\n(p1 / p2) | p3"
+  },
+  {
+    "objectID": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#creating-a-composite-figure-with-tag",
+    "href": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#creating-a-composite-figure-with-tag",
+    "title": "Hand-on_EX02",
+    "section": "2.5.4 Creating a composite figure with tag",
+    "text": "2.5.4 Creating a composite figure with tag\n\n((p1 / p2) | p3) + \n  plot_annotation(tag_levels = 'I')"
+  },
+  {
+    "objectID": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#creating-figure-with-insert",
+    "href": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#creating-figure-with-insert",
+    "title": "Hand-on_EX02",
+    "section": "2.5.5 Creating figure with insert",
+    "text": "2.5.5 Creating figure with insert\n\np3 + inset_element(p2, \n                   left = 0.02, \n                   bottom = 0.7, \n                   right = 0.5, \n                   top = 1)"
+  },
+  {
+    "objectID": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#creating-a-composite-figure-by-using-patchwork-and-ggtheme",
+    "href": "Hand-on EX/Hand-on-Ex02/Hands-on_EX02.html#creating-a-composite-figure-by-using-patchwork-and-ggtheme",
+    "title": "Hand-on_EX02",
+    "section": "2.5.6 Creating a composite figure by using patchwork and ggtheme",
+    "text": "2.5.6 Creating a composite figure by using patchwork and ggtheme\n\npatchwork &lt;- (p1 / p2) | p3\npatchwork & theme_economist()"
   }
 ]

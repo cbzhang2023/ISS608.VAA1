@@ -16,7 +16,12 @@ website:
         menu:
           - text: "In-class Exercise 1"
             href: "In-class EX/In-class EX01/In-class EX01.html"
-      
+          - text: "In-class Exercise 2"
+            href: "In-class EX/In-class EX02/In-class EX02.html"
+      - text: "Take-home Exercise"
+        menu:
+          - text: "Take-home Exercise 1"
+            href: "Take-home EX/Take-home_EX01/Take-home Exercise 1.html"
     right:
       - href: index.qmd
         text: Home
@@ -25,7 +30,7 @@ website:
 
 format:
   html:
-    theme: morph
+    theme: Superhero
     css: styles.css
     toc: true
 

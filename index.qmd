@@ -4,12 +4,6 @@ title: "ISS608.VAA"
 
 # Welcome to ISSS608 **Visual Analytics and Applications**. In this website,you will find my coursework prepared for this course.
 
----
-title: "ISS608.VAA"
----
-
-Welcome to ISSS608 **Visual Analytics and Applications**. In this website,you will find my coursework prepared for this course.
-
 ## Welcome to my page.
 
 # Index:

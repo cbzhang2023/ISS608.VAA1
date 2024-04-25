@@ -113,17 +113,14 @@ library(tidyverse)
 library(lubridate)
 library(ggplot2)
 
-# 数据预处理
 data_q1 <- data_cleaned %>%
   filter(`Sale.Date` >= ymd("2024-01-01"), `Sale.Date` <= ymd("2024-03-31")) %>%
   mutate(Month = floor_date(`Sale.Date`, "month"))
 
-# 计算每日平均单价
 avg_price_by_area <- data_q1 %>%
   group_by(Area_Category, `Sale.Date`) %>%
   summarise(Avg_Unit_Price_PSM = mean(`Unit.Price....PSM.`, na.rm = TRUE), .groups = "drop") # 确保列名正确
 
-# 绘制每日平均单价的线图
 p_line <- ggplot(avg_price_by_area, aes(x = `Sale.Date`, y = Avg_Unit_Price_PSM, group = Area_Category, color = Area_Category)) +
   geom_line() +
   labs(title = "Daily Average Unit Price ($ PSM) by Area Category (Q1 2024)",
@@ -133,7 +130,6 @@ p_line <- ggplot(avg_price_by_area, aes(x = `Sale.Date`, y = Avg_Unit_Price_PSM,
   theme(axis.text.x = element_text(angle = 45, hjust = 1),
         legend.position = "bottom")
 
-# 使用原始数据绘制小提琴图和数据点
 p_box <- ggplot(data_q1, aes(x = Area_Category, y = `Unit.Price....PSM.`, fill = Area_Category)) +
   geom_boxplot() +
   geom_jitter(width = 0.2, alpha = 0.5) +  # 添加点
@@ -147,16 +143,10 @@ p_box <- ggplot(data_q1, aes(x = Area_Category, y = `Unit.Price....PSM.`, fill =
 
 
 
-# 组合两个图形
 library(patchwork)
 p_combined <- p_line / p_box
 
-# 显示组合图
 p_combined
-
-# 如果需要保存图表
-ggsave("Monthly_Unit_Price_PSM_by_Area_Category_Q1_2024.png", plot = p_combined, width = 12, height = 8, dpi = 300)
-
 
 
 ```

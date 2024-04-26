@@ -1,0 +1,33 @@
+---
+title: "In-class Ex01"
+author: "Chenbin Zhang"
+date: "April 13.2024"
+data-modified: "last-modified"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+## Loading R package
+
+In the code chunk below, ['p_load()']() of pacman package is used to load tidyverse family of package 
+
+```{r}
+pacman::p_load(tidyverse)
+```
+
+```{r}
+realis <-read.csv("data/realis2019.csv")
+head(realis, 10)
+```
+
+```{r}
+realis <-read_csv("data/realis2019.csv")
+```
+
+```{r}
+ggplot(data = realis,
+       aes(x = 'Unit price($ psm)'))
+```

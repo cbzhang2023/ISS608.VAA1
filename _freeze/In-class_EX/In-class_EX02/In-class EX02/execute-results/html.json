@@ -1,0 +1,14 @@
+{
+  "hash": "2111a930ba006311b9f822f5d6e62777",
+  "result": {
+    "markdown": "---\ntitle: \"In-class EX02\"\nauthor: \"ZHANG Chenbin\"\ndata: \"April 20,2024\"\ndata-modified: \"last-modified\"\nexecute: \n  eval: true\n  echo: true\n  warning: false\n  freeze: true\n---\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(ggiraph, plotly, listviewer,\n               patchwork, DT, tidyverse,ggdist, ggridges, ggthemes,\n               colorspace) \n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nexam_df <- read.csv(\"data/exam_data.csv\")\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

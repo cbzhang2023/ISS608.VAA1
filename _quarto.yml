@@ -9,19 +9,19 @@ website:
       - text: "Hands-on Exercise"
         menu:
           - text: "Hands-on Exercise 1"
-            href: "Hand-on EX/Hand-on-EX01/Hands-on_EX01.html"
+            href: "Hand-on_EX/Hand-on-EX01/Hands-on_EX01.html"
           - text: "Hands-on Exercise 2"
-            href: "Hand-on EX/Hand-on-EX02/Hands-on_EX02.html"
+            href: "Hand-on_EX/Hand-on-EX02/Hands-on_EX02.html"
       - text: "In-class Exercise"
         menu:
           - text: "In-class Exercise 1"
-            href: "In-class EX/In-class EX01/In-class EX01.html"
+            href: "In-class_EX/In-class_EX01/In-class EX01.html"
           - text: "In-class Exercise 2"
-            href: "In-class EX/In-class EX02/In-class EX02.html"
+            href: "In-class_EX/In-class_EX02/In-class EX02.html"
       - text: "Take-home Exercise"
         menu:
           - text: "Take-home Exercise 1"
-            href: "Take-home EX/Take-home_EX01/Take-home Exercise 1.html"
+            href: "Take-home_EX/Take-home_EX01/Take-home Exercise 1.html"
     right:
       - href: index.qmd
         text: Home

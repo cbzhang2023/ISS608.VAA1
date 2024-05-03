@@ -8,11 +8,15 @@ execute:
   freeze: true
 ---
 
-DataVis Makeover
+# DataVis Makeover
 
-Getting Started
+we've chosen this chart as the focus for improvement, with a primary emphasis on enhancing temporal comparisons and categorizing by type of sale. This approach aims to refine the visualization by incorporating temporal dynamics that allow users to observe trends over time, alongside a clear categorization of data based on different types of sales. This dual enhancement will not only increase the analytical depth of the chart but also improve its utility for users who need to understand how different market segments perform across various time periods.
 
-Loading the required packages
+## Getting Started
+
+### Loading the required packages
+
+First import the packages used for the original analysis and the packages required for the new analysis.
 
 ```{r}
 pacman::p_load(dplyr, purrr, readr, ggiraph,
@@ -20,7 +24,7 @@ pacman::p_load(dplyr, purrr, readr, ggiraph,
                patchwork, ggthemes, hrbrthemes, tidyverse, plotly, readr)
 ```
 
-Loading the data into the R environment
+### Loading the data into the R environment
 
 ```{r}
 data1 = read_csv("data/ResidentialTransaction20240308160536.csv")
@@ -33,11 +37,12 @@ combined_data <- bind_rows(data1, data2, data3, data4, data5)
 glimpse(combined_data)
 ```
 
-Preparing the data
+### Preparing the data
+
+Clean and process data
 
 ```{r}
 
-# Perform the mutations step by step to avoid complexity and potential errors
 data_cleaned <- combined_data %>%
   mutate(`Sale Date` = dmy(`Sale Date`)) %>%
   mutate(`Area (SQM)` = as.numeric(gsub(",", "", `Area (SQM)`))) %>%
@@ -50,29 +55,32 @@ data_cleaned <- combined_data %>%
     include.lowest = TRUE
   ))
 
-# Adding Quarter separately
 data_cleaned <- data_cleaned %>%
   mutate(Quarter = ifelse(month(`Sale Date`) %in% c(1, 2, 3), "Q1",
                           ifelse(month(`Sale Date`) %in% c(4, 5, 6), "Q2",
                                  ifelse(month(`Sale Date`) %in% c(7, 8, 9), "Q3", "Q4"))))
 
-# Output the structure of data_cleaned to confirm changes
 str(data_cleaned)
 
 
 ```
+Validate data according to original methods
 
-
-
+::: panel-tabset
+## Code
 ```{r}
 duplicate <- combined_data %>% 
   group_by_all() %>% 
   filter(n()>1) %>% 
   ungroup()
   
+```
+## Result
+```{r}
 duplicate
 ```
-
+::: panel-tabset
+## Code
 ```{r}
 F1 <- ggplot(combined_data, aes(x = `Property Type`)) + 
     geom_bar_interactive(aes(fill = `Planning Region`), position = "dodge") +  
@@ -81,12 +89,15 @@ F1 <- ggplot(combined_data, aes(x = `Property Type`)) +
     facet_wrap(~ `Planning Region`, scales = "free") +
     theme_stata(base_size = 2.5)
     theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
+```
+## Plot
+```{r}
     F1
 ```
 
-DataViz Makeover
+## DataViz Makeover
 
-Step 1: time analysis
+### Step 1: time analysis
 
 The absence of data from the previous year's four quarters in the scatter plot analyzing the relationship between transacted prices and area poses certain challenges. Primarily, it limits the depth of market trend analysis over an extended period, potentially overlooking seasonal fluctuations and economic cycles that significantly influence real estate markets. Without this broader temporal context, the analysis might give undue emphasis to short-term variations or isolated events, potentially leading to a somewhat narrow perspective on market dynamics. Such a limitation curtails the capacity to observe and interpret long-term trends and the cyclical nature of the housing market, which are essential for comprehensive statistical analysis and forecasting.
 
@@ -94,8 +105,8 @@ Furthermore, the lack of previous year data restricts year-over-year comparative
 
 To address the challenges of a limited temporal analysis, I have enhanced the dataset by incorporating data from the previous year and categorizing it by quarters. This addition allows for a more nuanced exploration of the changes and trends over time. By analyzing the data on a quarterly basis, we can better understand the seasonal fluctuations and the impact of economic cycles on the real estate market.
 
-
-
+::: panel-tabset
+## Code
 ```{r}
 
 P3_interactive <- plot_ly(data = data_cleaned, x = ~`Area (SQM)`, y = ~`Unit Price ($ PSM)`, type = 'scatter', mode = 'markers',
@@ -119,12 +130,18 @@ P3_interactive <- plot_ly(data = data_cleaned, x = ~`Area (SQM)`, y = ~`Unit Pri
              list(label = q, method = "restyle", args = list("transforms[0].value", q))
            })
          )))
-
+```
+## Plot
+```{r}
 P3_interactive
 
 ```
+## Conclusion
+The interactive scatter plot offers several advantages over the static scatter plot with a trend line, particularly in terms of user engagement and analytical depth. Firstly, its interactivity enhances user experience by allowing for the exploration of individual data points through tooltips and dynamic elements such as sliders for temporal data filtering. This interactivity not only makes the data more accessible but also enables users to perform on-the-fly analysis of specific time periods without the need to switch between different plots. Moreover, the ability to zoom in and navigate through dense clusters of data points helps in examining detailed patterns that might be obscured in a static plot. This dynamic functionality is especially valuable in digital platforms where users expect an interactive and engaging data visualization experience.
 
-Step 2: Type of Sale
+
+
+### Step 2: Type of Sale
 
 Failing to categorize data by "Type of Sale" in an analysis of real estate transactions introduces significant limitations that can obscure crucial insights into different market segments. Without this categorization, the analysis merges various types of transactions, such as new sales, resales, and sub-sales, into a single aggregated dataset. This aggregation can lead to a generalized overview that fails to capture the distinct behaviors and trends associated with each sale type.
 
@@ -133,6 +150,9 @@ Firstly, different sale types often exhibit unique pricing patterns, demand cycl
 Moreover, policies and marketing strategies tailored to specific sale types cannot be effectively formulated or implemented without a clear understanding of the particular characteristics and needs of each segment. For example, marketing strategies that are effective for new developments might not work for resales. Therefore, by not categorizing data by "Type of Sale," the analysis loses the potential to guide targeted interventions and optimize resource allocation, potentially leading to less effective strategies and missed opportunities in the market.
 
 To enhance our analysis, I've processed the data to categorize it by different "Type of Sale." This categorization allows us to delve into the specific characteristics and trends of new sales, resales, and sub-sales separately.
+
+::: panel-tabset
+## Code
 
 ```{r}
 
@@ -181,7 +201,12 @@ P3_interactive <- plot_ly(data = data_cleaned, x = ~`Area (SQM)`, y = ~`Unit Pri
              )
            })
          )))
-
+```
+## Plot
+```{r}
 P3_interactive
 
 ```
+## Conclusion
+The updated interactive scatter plot enhances data analysis capabilities significantly by incorporating dropdown menus for category-based filtering, such as transaction types (New Sale, Resale, Sub Sale). This feature allows users to segment the dataset on the fly, enabling a focused examination of trends and patterns specific to each category. Such granularity is invaluable for users needing to make nuanced assessments of market dynamics. Furthermore, the plot's clear presentation even in high-density areas ensures that all data points are easily visible and distinguishable, avoiding any visual confusion and facilitating precise analysis. Enhanced interactivity, provided by the dropdown filters, improves the user experience by allowing dynamic and complex data segmentation within the visualization interface itself. This makes the plot a highly effective tool for stakeholders requiring a comprehensive and detailed view of various market conditions without the need for additional tools or programming efforts.
+

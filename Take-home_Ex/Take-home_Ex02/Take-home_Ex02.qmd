@@ -17,7 +17,7 @@ Loading the required packages
 ```{r}
 pacman::p_load(dplyr, purrr, readr, ggiraph,
                ggplot2, lubridate, ggrepel,
-               patchwork, ggthemes, hrbrthemes, tidyverse, plotly)
+               patchwork, ggthemes, hrbrthemes, tidyverse, plotly, readr)
 ```
 
 Loading the data into the R environment
@@ -37,16 +37,8 @@ Preparing the data
 
 ```{r}
 
-library(dplyr)
-library(lubridate)
-
-# Check that 'data' is a dataframe
-if (!is.data.frame(data)) {
-  stop("Data is not a dataframe")
-}
-
 # Perform the mutations step by step to avoid complexity and potential errors
-data_cleaned <- data %>%
+data_cleaned <- combined_data %>%
   mutate(`Sale Date` = dmy(`Sale Date`)) %>%
   mutate(`Area (SQM)` = as.numeric(gsub(",", "", `Area (SQM)`))) %>%
   mutate(`Unit Price ($ PSM)` = as.numeric(gsub("\\$", "", gsub(",", "", `Unit Price ($ PSM)`)))) %>%

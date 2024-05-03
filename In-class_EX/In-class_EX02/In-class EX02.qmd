@@ -19,7 +19,6 @@ pacman::p_load(ggdist, ggridges, ggthemes,
 exam <- read_csv("data/Exam_data.csv")
 ```
 
-
 ```{r}
 # Ensure that the 'ENGLISH' column is numeric
 exam$ENGLISH <- as.numeric(as.character(exam$ENGLISH))
@@ -54,9 +53,6 @@ ggplot(exam,
 
 ```
 
-
-
-
 ```{r}
 ggplot(exam, 
        aes(x = ENGLISH, 
@@ -75,7 +71,6 @@ ggplot(exam,
   theme_ridges()
 ```
 
-
 ```{r}
 ggplot(exam,
        aes(x = ENGLISH, 
@@ -87,7 +82,6 @@ ggplot(exam,
                        direction = -1) +
   theme_ridges()
 ```
-
 
 ```{r}
 ggplot(exam,
@@ -166,29 +160,3 @@ ggplot(exam,
   coord_flip() +
   theme_economist()
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

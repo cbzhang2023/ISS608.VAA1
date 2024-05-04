@@ -15,13 +15,13 @@ website:
           - text: "Hands-on Exercise 3"
             href: "Hand-on_EX/Hand-on-EX03/Hands-on_EX03.html"
           - text: "Hands-on Exercise 4"
-            href: "Hand-on_EX/Hand-on-EX04/Hands-on_EX04.html"
+            href: "Hand-on_EX/Hand-on-EX04/Hands-on_Ex04.html"
       - text: "In-class Exercise"
         menu:
           - text: "In-class Exercise 1"
             href: "In-class_EX/In-class_EX01/In-class EX01.html"
           - text: "In-class Exercise 2"
-            href: "In-class_EX/In-class_EX02/In-class EX02.html"
+            href: "In-class_EX/In-class_EX02/In-class Ex02.html"
       - text: "Take-home Exercise"
         menu:
           - text: "Take-home Exercise 1"

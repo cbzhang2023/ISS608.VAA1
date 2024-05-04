@@ -10,7 +10,7 @@ execute:
 
 
 ```{r}
-pacman::p_load(tidyverse, ggstatsplot,tidyr,dplyr)
+pacman::p_load(tidyverse, ggstatsplot,tidyr,dplyr,rstantools,readxl, performance, parameters)
 ```
 
 ```{r}
@@ -61,5 +61,41 @@ ggwithinstats(data = filter(exam_long,
               y = "SCORES",
               type = "p")
 ```
+```{r}
+ggscatterstats(data = exam,
+               x = MATHS,
+               y = ENGLISH,
+               marginal = TRUE,
+               label.var = ID,
+               label.expression = ENGLISH > 90 & MATHS > 90,
+  
+  )
+```
+```{r}
+ggscatterstats(data = exam,
+               x = MATHS,
+               y = ENGLISH,
+               marginal = TRUE,
+               label.var = ID,
+               label.expression = ENGLISH > 90 & MATHS > 90,
+  
+)
+```
 
 
+```{r}
+data_cars <- read_xls("data/ToyotaCorolla.xls","data")
+```
+
+
+```{r}
+t <- parameters(model1)
+```
+
+```{r}
+model1 <- lm(Price ~ Age_08_04 + KM + Weight + Guarantee_Period, data = data_cars )
+```
+
+```{r}
+
+```

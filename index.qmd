@@ -1,9 +1,39 @@
 ---
-title: "ISS608.VAA"
+title: "Visual Analytics and Applications"
+listing:
+  - id: Hands-on_Exercise
+    contents: 
+      - "Hand-on_EX/*/*.qmd"
+    sort:
+      - "title"
+    type: grid
+    fields: [image, date, title, author]
+    
+  - id: In-class_Exercise
+    contents: 
+      - "In-class_EX/*/*.qmd"
+    sort:
+      - "title"
+    type: grid
+    fields: [image, date, title, author]
+
+  - id: Take-home_Exercise
+    contents: 
+      - "Take-home_Ex/*/*.qmd"
+    sort:
+      - "title"
+    type: grid
+    fields: [image, date, title, author]
+toc: false
+
 ---
 
 # Welcome to ISSS608 **Visual Analytics and Applications**. In this website,you will find my coursework prepared for this course.
 
 ## Welcome to my page.
 
-# 
+
+    
+    
+    
+    

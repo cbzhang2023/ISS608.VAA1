@@ -139,7 +139,7 @@ P3_interactive
 ## Conclusion
 The interactive scatter plot offers several advantages over the static scatter plot with a trend line, particularly in terms of user engagement and analytical depth. Firstly, its interactivity enhances user experience by allowing for the exploration of individual data points through tooltips and dynamic elements such as sliders for temporal data filtering. This interactivity not only makes the data more accessible but also enables users to perform on-the-fly analysis of specific time periods without the need to switch between different plots. Moreover, the ability to zoom in and navigate through dense clusters of data points helps in examining detailed patterns that might be obscured in a static plot. This dynamic functionality is especially valuable in digital platforms where users expect an interactive and engaging data visualization experience.
 
-
+:::
 
 ### Step 2: Type of Sale
 
@@ -202,11 +202,15 @@ P3_interactive <- plot_ly(data = data_cleaned, x = ~`Area (SQM)`, y = ~`Unit Pri
            })
          )))
 ```
+
 ## Plot
+
 ```{r}
 P3_interactive
 
 ```
-## Conclusion
-The updated interactive scatter plot enhances data analysis capabilities significantly by incorporating dropdown menus for category-based filtering, such as transaction types (New Sale, Resale, Sub Sale). This feature allows users to segment the dataset on the fly, enabling a focused examination of trends and patterns specific to each category. Such granularity is invaluable for users needing to make nuanced assessments of market dynamics. Furthermore, the plot's clear presentation even in high-density areas ensures that all data points are easily visible and distinguishable, avoiding any visual confusion and facilitating precise analysis. Enhanced interactivity, provided by the dropdown filters, improves the user experience by allowing dynamic and complex data segmentation within the visualization interface itself. This makes the plot a highly effective tool for stakeholders requiring a comprehensive and detailed view of various market conditions without the need for additional tools or programming efforts.
 
+## Conclusion
+
+The updated interactive scatter plot enhances data analysis capabilities significantly by incorporating dropdown menus for category-based filtering, such as transaction types (New Sale, Resale, Sub Sale). This feature allows users to segment the dataset on the fly, enabling a focused examination of trends and patterns specific to each category. Such granularity is invaluable for users needing to make nuanced assessments of market dynamics. Furthermore, the plot's clear presentation even in high-density areas ensures that all data points are easily visible and distinguishable, avoiding any visual confusion and facilitating precise analysis. Enhanced interactivity, provided by the dropdown filters, improves the user experience by allowing dynamic and complex data segmentation within the visualization interface itself. This makes the plot a highly effective tool for stakeholders requiring a comprehensive and detailed view of various market conditions without the need for additional tools or programming efforts.
+:::

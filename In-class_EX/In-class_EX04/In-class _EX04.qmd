@@ -1,0 +1,65 @@
+---
+title: "In-class_EX04"
+author: "Zhang Chenbin"
+execute: 
+  eval: true
+  echo: true
+  warning: false
+  freeze: true
+---
+
+
+```{r}
+pacman::p_load(tidyverse, ggstatsplot,tidyr,dplyr)
+```
+
+```{r}
+exam <- read_csv("data/Exam_data.csv")
+```
+
+
+
+```{r}
+set.seed(1234)
+
+gghistostats(
+  data = exam,
+  x = ENGLISH,
+  type = "bayes",
+  #type = "parametric","bayes",
+  test.value = 60,
+  bin.args = list(color = "black",
+                  fill = "grey50",
+                  alpha = 0.7),
+  normal.curve = FALSE,
+  normal.curve.args = list(linewidth = 2),
+  xlab = "English scores"
+)
+```
+
+```{r}
+ggdotplotstats(
+  data = exam,
+  x = ENGLISH,
+  y = CLASS,
+  title = "",
+  xlab = ""
+  
+)
+```
+
+```{r}
+exam_long <- exam %>%
+  pivot_longer(
+  cols = ENGLISH:SCIENCE,
+  names_to = "SUBJECT",
+  values_to = "SCORES") %>%
+ filter(CLASS == "3A")
+ggwithinstats(data = filter(exam_long,
+                            SUBJECT %in% c("ENGLISH", "SCIENCE")),
+              x = "SUBJECT",
+              y = "SCORES",
+              type = "p")
+```
+
+

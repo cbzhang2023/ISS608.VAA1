@@ -408,8 +408,6 @@ funnel_plot(
 
 ```
 
-
-
 ## Computing the basic derived fields
 
 ```{r}

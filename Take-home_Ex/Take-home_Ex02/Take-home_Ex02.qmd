@@ -237,3 +237,11 @@ P3_interactive
 
 The updated interactive scatter plot enhances data analysis capabilities significantly by incorporating dropdown menus for category-based filtering, such as transaction types (New Sale, Resale, Sub Sale). This feature allows users to segment the dataset on the fly, enabling a focused examination of trends and patterns specific to each category. Such granularity is invaluable for users needing to make nuanced assessments of market dynamics. Furthermore, the plot's clear presentation even in high-density areas ensures that all data points are easily visible and distinguishable, avoiding any visual confusion and facilitating precise analysis. Enhanced interactivity, provided by the dropdown filters, improves the user experience by allowing dynamic and complex data segmentation within the visualization interface itself. This makes the plot a highly effective tool for stakeholders requiring a comprehensive and detailed view of various market conditions without the need for additional tools or programming efforts.
 :::
+
+## Reference
+
+-   [URA releases flash estimate of 1st Quarter 2024 private residential property price index](https://www.ura.gov.sg/Corporate/Media-Room/Media-Releases/pr24-11)
+
+-   [Unsold private housing stock on the rise ahead of ramp-up in new launches in 2024](https://www.businesstimes.com.sg/property/unsold-private-housing-stock-rise-ahead-ramp-new-launches-2024)
+
+-   [HDB resale prices rise 1.7%; private home prices up 1.5% in first quarter: Flash estimates](https://www.channelnewsasia.com/singapore/hdb-resale-private-home-prices-rise-waiting-period-property-analysts-4233876)

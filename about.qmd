@@ -24,6 +24,7 @@ Go away.
 
 ![](images/义眼丁真.jpg){fig-align="center" width="330"}
 
-<div style="height: 50px;"></div>
+::: {style="height: 50px;"}
+:::
 
 ok bro,you still be there you catch me Good morning, and in case I don't see you, Good afternoon, Good evening, And good night.

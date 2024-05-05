@@ -1,5 +1,6 @@
 ---
 title: "Visual Analytics and Applications"
+author: "Zhang Chenbin"
 listing:
   - id: Hands-on_Exercise
     contents: 
@@ -25,15 +26,20 @@ listing:
     type: grid
     fields: [image, date, title, author]
 toc: false
-
 ---
 
-# Welcome to ISSS608 **Visual Analytics and Applications**. In this website,you will find my coursework prepared for this course.
+# Welcome to my page.
 
-## Welcome to my page.
+![](images/u=3841581756,1150662843&fm=253&fmt=auto&app=120&f=JPEG.webp){fig-align="center" width="600"}
 
+<h1 align="center">
 
-    
-    
-    
-    
+Good morning, and in case I don't see you,
+
+</h1>
+
+<h1 align="center">
+
+Good afternoon, Good evening, And good night.
+
+</h1>

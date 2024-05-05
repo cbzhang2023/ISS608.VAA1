@@ -78,7 +78,9 @@ str(data_cleaned)
 
 Validate data according to original methods
 
-::: panel-tabset \## Code
+::: panel-tabset 
+
+## Code
 
 ```{r}
 duplicate <- combined_data %>% 
@@ -93,8 +95,10 @@ duplicate <- combined_data %>%
 ```{r}
 duplicate
 ```
+:::
 
-::: panel-tabset \## Code
+::: panel-tabset 
+## Code
 
 ```{r}
 F1 <- ggplot(combined_data, aes(x = `Property Type`)) + 
@@ -111,6 +115,7 @@ F1 <- ggplot(combined_data, aes(x = `Property Type`)) +
 ```{r}
     F1
 ```
+:::
 
 ## DataViz Makeover
 
@@ -123,6 +128,7 @@ Furthermore, the lack of previous year data restricts year-over-year comparative
 To address the challenges of a limited temporal analysis, I have enhanced the dataset by incorporating data from the previous year and categorizing it by quarters. This addition allows for a more nuanced exploration of the changes and trends over time. By analyzing the data on a quarterly basis, we can better understand the seasonal fluctuations and the impact of economic cycles on the real estate market.
 
 ::: panel-tabset
+
 ## Code
 
 ```{r}

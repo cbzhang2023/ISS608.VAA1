@@ -10,7 +10,13 @@ execute:
 
 # DataVis Makeover
 
-we've chosen this chart as the focus for improvement, with a primary emphasis on enhancing temporal comparisons and categorizing by type of sale. This approach aims to refine the visualization by incorporating temporal dynamics that allow users to observe trends over time, alongside a clear categorization of data based on different types of sales. This dual enhancement will not only increase the analytical depth of the chart but also improve its utility for users who need to understand how different market segments perform across various time periods.
+![](images/cac0e4a0df9cdbdbe4566df4d7bec1d-01.png)
+
+Hello,today we choose the analysis from [ZOU JIAXUN](https://zoujiaxun.netlify.app/take-home_ex/take-home_ex01/take-home_ex01).I'll criticize you.![](images/R.jpeg){width="30"}
+
+![](images/OIP.jpeg){fig-align="center" width="300"}
+
+This scatter plot, which displays the relationship between property area (in square feet) and transacted prices (in thousands of dollars), is created from a randomly sampled subset of 500 data points from a comprehensive dataset, rather than isolating data from the first quarter of 2024. This approach may not provide an accurate reflection of the specific market conditions of early 2024, as it includes data from various time periods with potentially different economic influences. Additionally, the plot does not differentiate between types of sales, such as new homes, resales, or foreclosures, which can vary significantly in pricing dynamics. This aggregation could obscure distinct patterns and trends that are more apparent when analyzing these groups separately, leading to less precise insights for targeted strategic decision-making or market analysis.
 
 ## Getting Started
 
@@ -43,6 +49,9 @@ Clean and process data
 
 ```{r}
 
+library(dplyr)
+library(lubridate)
+
 data_cleaned <- combined_data %>%
   mutate(`Sale Date` = dmy(`Sale Date`)) %>%
   mutate(`Area (SQM)` = as.numeric(gsub(",", "", `Area (SQM)`))) %>%
@@ -56,18 +65,21 @@ data_cleaned <- combined_data %>%
   ))
 
 data_cleaned <- data_cleaned %>%
-  mutate(Quarter = ifelse(month(`Sale Date`) %in% c(1, 2, 3), "Q1",
-                          ifelse(month(`Sale Date`) %in% c(4, 5, 6), "Q2",
-                                 ifelse(month(`Sale Date`) %in% c(7, 8, 9), "Q3", "Q4"))))
+  mutate(Quarter = paste(year(`Sale Date`), 
+                         ifelse(month(`Sale Date`) %in% c(1, 2, 3), "Q1",
+                                ifelse(month(`Sale Date`) %in% c(4, 5, 6), "Q2",
+                                       ifelse(month(`Sale Date`) %in% c(7, 8, 9), "Q3", "Q4"))), sep = "-"))
 
 str(data_cleaned)
 
 
+
 ```
+
 Validate data according to original methods
 
-::: panel-tabset
-## Code
+::: panel-tabset \## Code
+
 ```{r}
 duplicate <- combined_data %>% 
   group_by_all() %>% 
@@ -75,12 +87,15 @@ duplicate <- combined_data %>%
   ungroup()
   
 ```
+
 ## Result
+
 ```{r}
 duplicate
 ```
-::: panel-tabset
-## Code
+
+::: panel-tabset \## Code
+
 ```{r}
 F1 <- ggplot(combined_data, aes(x = `Property Type`)) + 
     geom_bar_interactive(aes(fill = `Planning Region`), position = "dodge") +  
@@ -90,7 +105,9 @@ F1 <- ggplot(combined_data, aes(x = `Property Type`)) +
     theme_stata(base_size = 2.5)
     theme(axis.text.x = element_text(angle = 45, hjust = 1)) 
 ```
+
 ## Plot
+
 ```{r}
     F1
 ```
@@ -107,9 +124,11 @@ To address the challenges of a limited temporal analysis, I have enhanced the da
 
 ::: panel-tabset
 ## Code
-```{r}
 
-P3_interactive <- plot_ly(data = data_cleaned, x = ~`Area (SQM)`, y = ~`Unit Price ($ PSM)`, type = 'scatter', mode = 'markers',
+```{r}
+library(plotly)
+
+P3_interactive <- plot_ly(data = data_cleaned, x = ~`Area (SQFT)`, y = ~`Transacted Price ($)`, type = 'scatter', mode = 'markers',
                           hoverinfo = 'text',
                           transforms = list(
                             list(
@@ -119,10 +138,10 @@ P3_interactive <- plot_ly(data = data_cleaned, x = ~`Area (SQM)`, y = ~`Unit Pri
                               value = unique(data_cleaned$Quarter)[1]  
                             )
                           ),
-                          text = ~paste("Price: ", `Unit Price ($ PSM)`, "$/sqm<br>Area: ", `Area (SQM)`, "sqm<br>Quarter: ", Quarter)) %>%
-  layout(title = 'Interactive Scatter Plot of Unit Price vs. Area by Category',
-         xaxis = list(title = 'Area (SQM)'),
-         yaxis = list(title = 'Unit Price ($ PSM)'),
+                          text = ~paste("Price: ", `Transacted Price ($)`, "<br>Area: ", `Area (SQFT)`, "<br>Quarter: ", Quarter)) %>%
+  layout(title = 'Scatter Plot of Transacted Price vs. Area',
+         xaxis = list(title = 'Area (SQFT)'),
+         yaxis = list(title = 'Transacted Price ($)'),
          sliders = list(list(
            active = 0,
            currentvalue = list(prefix = "Quarter: "),
@@ -131,14 +150,17 @@ P3_interactive <- plot_ly(data = data_cleaned, x = ~`Area (SQM)`, y = ~`Unit Pri
            })
          )))
 ```
+
 ## Plot
+
 ```{r}
 P3_interactive
 
 ```
-## Conclusion
-The interactive scatter plot offers several advantages over the static scatter plot with a trend line, particularly in terms of user engagement and analytical depth. Firstly, its interactivity enhances user experience by allowing for the exploration of individual data points through tooltips and dynamic elements such as sliders for temporal data filtering. This interactivity not only makes the data more accessible but also enables users to perform on-the-fly analysis of specific time periods without the need to switch between different plots. Moreover, the ability to zoom in and navigate through dense clusters of data points helps in examining detailed patterns that might be obscured in a static plot. This dynamic functionality is especially valuable in digital platforms where users expect an interactive and engaging data visualization experience.
 
+## Conclusion
+
+The interactive scatter plot offers several advantages over the static scatter plot with a trend line, particularly in terms of user engagement and analytical depth. Firstly, its interactivity enhances user experience by allowing for the exploration of individual data points through tooltips and dynamic elements such as sliders for temporal data filtering. This interactivity not only makes the data more accessible but also enables users to perform on-the-fly analysis of specific time periods without the need to switch between different plots. Moreover, the ability to zoom in and navigate through dense clusters of data points helps in examining detailed patterns that might be obscured in a static plot. This dynamic functionality is especially valuable in digital platforms where users expect an interactive and engaging data visualization experience.
 :::
 
 ### Step 2: Type of Sale
@@ -155,15 +177,16 @@ To enhance our analysis, I've processed the data to categorize it by different "
 ## Code
 
 ```{r}
+library(plotly)
 
-P3_interactive <- plot_ly(data = data_cleaned, x = ~`Area (SQM)`, y = ~`Unit Price ($ PSM)`, type = 'scatter', mode = 'markers',
+P3_interactive <- plot_ly(data = data_cleaned, x = ~`Area (SQFT)`, y = ~`Transacted Price ($)`, type = 'scatter', mode = 'markers',
                           hoverinfo = 'text',
                           transforms = list(
                             list(
                               type = 'filter',
                               target = ~Quarter,
                               operation = '=',
-                              value = unique(data_cleaned$Quarter)[1]  
+                              value = unique(data_cleaned$Quarter)[1] 
                             ),
                             list(
                               type = 'filter',
@@ -172,10 +195,10 @@ P3_interactive <- plot_ly(data = data_cleaned, x = ~`Area (SQM)`, y = ~`Unit Pri
                               value = unique(data_cleaned$`Type of Sale`)[1] 
                             )
                           ),
-                          text = ~paste("Price: ", `Unit Price ($ PSM)`, "$/sqm<br>Area: ", `Area (SQM)`, "sqm<br>Quarter: ", Quarter, "<br>Type of Sale: ", `Type of Sale`)) %>%
-  layout(title = 'Interactive Scatter Plot of Unit Price vs. Area by Category',
-         xaxis = list(title = 'Area (SQM)'),
-         yaxis = list(title = 'Unit Price ($ PSM)'),
+                          text = ~paste("Price: ", `Transacted Price ($)`, "<br>Area: ", `Area (SQFT)`, "<br>Quarter: ", Quarter, "<br>Type of Sale: ", `Type of Sale`)) %>%
+  layout(title = 'Scatter Plot of Transacted Price vs. Area',
+         xaxis = list(title = 'Area (SQFT)'),
+         yaxis = list(title = 'Transacted Price ($)'),
          updatemenus = list(
            list(
              type = "dropdown",
@@ -184,7 +207,7 @@ P3_interactive <- plot_ly(data = data_cleaned, x = ~`Area (SQM)`, y = ~`Unit Pri
              buttons = lapply(unique(data_cleaned$`Type of Sale`), function(type) {
                list(
                  method = "restyle",
-                 args = list("transforms[1].value", type),  
+                 args = list("transforms[1].value", type),
                  label = type
                )
              })

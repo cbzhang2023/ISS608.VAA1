@@ -1,9 +1,25 @@
 ---
-title: "About"
+title: "Easter Eggs"
 ---
 
-About this site
+![](images/R.jpeg){width="40"}
 
-```{r}
-1 + 1
-```
+<h1 align="center">
+
+There are no
+
+</h1>
+
+<h1 align="center">
+
+Easter Eggs up here.
+
+</h1>
+
+<h1 align="center">
+
+Go away.
+
+</h1>
+
+![](images/义眼丁真.jpg){fig-align="center" width="330"}

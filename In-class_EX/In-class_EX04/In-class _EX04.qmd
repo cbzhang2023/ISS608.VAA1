@@ -8,7 +8,6 @@ execute:
   freeze: true
 ---
 
-
 ```{r}
 pacman::p_load(tidyverse, ggstatsplot,tidyr,dplyr,rstantools,readxl, performance, parameters)
 ```
@@ -16,8 +15,6 @@ pacman::p_load(tidyverse, ggstatsplot,tidyr,dplyr,rstantools,readxl, performance
 ```{r}
 exam <- read_csv("data/Exam_data.csv")
 ```
-
-
 
 ```{r}
 set.seed(1234)
@@ -61,6 +58,7 @@ ggwithinstats(data = filter(exam_long,
               y = "SCORES",
               type = "p")
 ```
+
 ```{r}
 ggscatterstats(data = exam,
                x = MATHS,
@@ -71,6 +69,7 @@ ggscatterstats(data = exam,
   
   )
 ```
+
 ```{r}
 ggscatterstats(data = exam,
                x = MATHS,
@@ -82,20 +81,7 @@ ggscatterstats(data = exam,
 )
 ```
 
-
 ```{r}
 data_cars <- read_xls("data/ToyotaCorolla.xls","data")
 ```
 
-
-```{r}
-t <- parameters(model1)
-```
-
-```{r}
-model1 <- lm(Price ~ Age_08_04 + KM + Weight + Guarantee_Period, data = data_cars )
-```
-
-```{r}
-
-```

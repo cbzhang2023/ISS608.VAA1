@@ -43,7 +43,7 @@ pacman::p_load(tidyverse, lubridate, patchwork, zoo)
 ### 2.2 Variable Selection
 
 | Category            | Description                                                                     |
-|-----------------------|-------------------------------------------------|
+|---------------------|---------------------------------------------------------------------------------|
 | Project Name        | the name of the property or title of the development project that is being sold |
 | Sale Date           | The specific date when the transaction was completed                            |
 | Type of Sale        | A new sale, resale, or auction, among other types.Here mainly analyze resale    |

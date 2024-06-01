@@ -30,7 +30,7 @@ toc: false
 
 # Welcome to my page.
 
-![](images/u=3841581756,1150662843&fm=253&fmt=auto&app=120&f=JPEG.webp){fig-align="center" width="600"}
+![](images/e815d1c8e57fe4f830a644972228f2a.png){fig-align="center"}
 
 <h1 align="center">
 

@@ -358,8 +358,7 @@ ggplot(channel_summary, aes(x = `Sales Channel`, y = Count, fill = `Sales Channe
 ```
 
 ```{r}
-output_file_path <- "D:/cleaned_transactions.csv"  # 替换为你希望保存文件的路径
-write.csv(df_filtered, output_file_path, row.names = FALSE)
+
 ```
 
 ```{r}
@@ -437,5 +436,213 @@ ggplot(df_channel_monthly, aes(x = YearMonth, y = Net_Price, color = `Sales Chan
   theme(legend.position = "bottom") +
   scale_y_continuous(labels = comma) +  # 使用逗号格式化Y轴数值
   scale_x_date(date_labels = "%Y-%m", date_breaks = "2 month")  # 设置X轴显示格式和间隔
+
+```
+
+
+
+
+
+
+
+```{r}
+library(dplyr)
+library(lubridate)
+
+# 加载数据
+transactions_df <- read.csv("D:/cleaned_transactions.csv")
+
+# 转换日期列为日期类型
+transactions_df$Document.Date <- as.Date(transactions_df$Document.Date)
+
+# 移除 Net.Price = 0 的行
+transactions_df <- transactions_df %>%
+  filter(Net.Price != 0)
+
+# 按顾客和购买日期排序
+transactions_df <- transactions_df %>%
+  arrange(Customer, Document.Date)
+
+# 计算每个顾客对每个物品的购买时间差
+transactions_df <- transactions_df %>%
+  group_by(Customer, Article.Code) %>%
+  mutate(Time.Diff = c(NA, diff(Document.Date)))
+
+# 为每次购买添加购买索引
+transactions_df <- transactions_df %>%
+  group_by(Customer, Article.Code) %>%
+  mutate(Purchase.Index = row_number()) %>%
+  ungroup() %>%
+  select(Customer, Article.Code, Purchase.Index, Document.Date, Time.Diff)
+
+# 存储详细分析结果为CSV文件
+output_file_path <- file.path(getwd(), "cleaned_transactions_no_zero_net_price.csv")
+write.csv(transactions_df, output_file_path, row.names = FALSE)
+
+# 检查输出文件路径
+output_file_path
+
+```
+
+```{r}
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+# Load the data
+cleaned_data <- read.csv("D:/cleaned_transactions.csv")
+
+# Convert 'Document Date' to Date format
+cleaned_data$Document.Date <- as.Date(cleaned_data$Document.Date)
+
+# Aggregate data
+monthly_data <- cleaned_data %>%
+  mutate(Month = format(Document.Date, "%Y-%m")) %>%
+  group_by(Month, Sales.Channel) %>%
+  summarise(Total.Net.Price = sum(Net.Price, na.rm = TRUE)) %>%
+  spread(Sales.Channel, Total.Net.Price, fill = 0)
+
+# Plot total order value
+monthly_data_long <- monthly_data %>%
+  gather(key = "Sales.Channel", value = "Total.Net.Price", -Month)
+
+ggplot(monthly_data_long, aes(x = Month, y = Total.Net.Price, fill = Sales.Channel)) +
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title = "Total Order Value by Sales Channel",
+       x = "Month",
+       y = "Total Order Value ($000)")
+
+# Plot share of total order value
+monthly_data_long <- monthly_data %>%
+  gather(key = "Sales.Channel", value = "Total.Net.Price", -Month) %>%
+  group_by(Month) %>%
+  mutate(Share = Total.Net.Price / sum(Total.Net.Price))
+
+ggplot(monthly_data_long, aes(x = Month, y = Share, fill = Sales.Channel)) +
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title = "Share of Total Order Value by Sales Channel",
+       x = "Month",
+       y = "Share of Total Order Value")
+```
+
+```{R}
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+# Load the data
+cleaned_data <- read.csv("D:/cleaned_transactions.csv")
+
+# Remove rows where Net.Price or Retail.Price is 0
+cleaned_data <- cleaned_data %>%
+  filter(Net.Price != 0, Retail.Price != 0)
+
+# Convert 'Document Date' to Date format
+cleaned_data$Document.Date <- as.Date(cleaned_data$Document.Date)
+
+# Aggregate data
+monthly_data <- cleaned_data %>%
+  mutate(Month = format(Document.Date, "%Y-%m")) %>%
+  group_by(Month, Sales.Channel) %>%
+  summarise(Total.Net.Price = sum(Net.Price, na.rm = TRUE)) %>%
+  spread(Sales.Channel, Total.Net.Price, fill = 0)
+
+# Define colors to match the target image
+colors <- c("Retail" = "#A8D08D", "eCommerce Stores" = "#F4B084",
+            "3rd Party Marketplaces" = "#9DC3E6", "Corp Sales" = "#FFD966",
+            "Multi-Channel" = "#C6E0B4")
+
+# Plot total order value
+monthly_data_long <- monthly_data %>%
+  gather(key = "Sales.Channel", value = "Total.Net.Price", -Month)
+
+ggplot(monthly_data_long, aes(x = Month, y = Total.Net.Price, fill = Sales.Channel)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = colors) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title = "Total Order Value by Sales Channel",
+       x = "Month",
+       y = "Total Order Value ($000)") +
+  scale_y_continuous(labels = scales::comma)
+
+# Plot share of total order value
+monthly_data_long <- monthly_data %>%
+  gather(key = "Sales.Channel", value = "Total.Net.Price", -Month) %>%
+  group_by(Month) %>%
+  mutate(Share = Total.Net.Price / sum(Total.Net.Price))
+
+ggplot(monthly_data_long, aes(x = Month, y = Share, fill = Sales.Channel)) +
+  geom_bar(stat = "identity") +
+  scale_fill_manual(values = colors) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title = "Share of Total Order Value by Sales Channel",
+       x = "Month",
+       y = "Share of Total Order Value") +
+  scale_y_continuous(labels = scales::percent)
+
+```
+
+```{r}
+# Load necessary libraries
+library(ggplot2)
+library(dplyr)
+library(tidyr)
+
+# Load the data
+cleaned_data <- read.csv("D:/cleaned_transactions.csv")
+
+# Remove rows where Net.Price or Retail.Price is 0
+cleaned_data <- cleaned_data %>%
+  filter(Net.Price != 0, Retail.Price != 0)
+
+# Convert 'Document Date' to Date format
+cleaned_data$Document.Date <- as.Date(cleaned_data$Document.Date)
+
+# Aggregate data
+monthly_data <- cleaned_data %>%
+  mutate(Month = format(Document.Date, "%Y-%m")) %>%
+  group_by(Month, Sales.Channel) %>%
+  summarise(
+    Total.Qty = sum(Qty, na.rm = TRUE),
+    Total.Orders = n_distinct(Order.No),
+    Total.Net.Price = sum(Net.Price, na.rm = TRUE)
+  ) %>%
+  gather(key = "Metric", value = "Value", -Month, -Sales.Channel)
+
+# Define colors to match the target image
+colors <- c("Retail" = "#A8D08D", "eCommerce Stores" = "#F4B084",
+            "3rd Party Marketplaces" = "#9DC3E6", "Corp Sales" = "#FFD966",
+            "Multi-Channel" = "#C6E0B4")
+
+# Plot Qty of haircare products by Sales Channel
+ggplot(monthly_data %>% filter(Metric == "Total.Qty"), aes(x = Month, y = Value, fill = Sales.Channel)) +
+  geom_bar(stat = "identity", position = "stack") +
+  scale_fill_manual(values = colors) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title = "Qty of haircare products by Sales Channel",
+       x = "Month",
+       y = "Sum of Qty")
+
+# Plot Order no. of haircare products by Sales Channel
+ggplot(monthly_data %>% filter(Metric == "Total.Orders"), aes(x = Month, y = Value, fill = Sales.Channel)) +
+  geom_bar(stat = "identity", position = "stack") +
+  scale_fill_manual(values = colors) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title = "Order no. of haircare products by Sales Channel",
+       x = "Month",
+       y = "Count of Order No")
+
+# Plot Revenue of haircare products by Sales Channel
+ggplot(monthly_data %>% filter(Metric == "Total.Net.Price"), aes(x = Month, y = Value, fill = Sales.Channel)) +
+  geom_bar(stat = "identity", position = "stack") +
+  scale_fill_manual(values = colors) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  labs(title = "Revenue of haircare products by Sales Channel",
+       x = "Month",
+       y = "Sum of Net Price")
 
 ```

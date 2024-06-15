@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Visual Analytics and Applications",
     "section": "",
-    "text": "Welcome to my page.\n\n\n\n\n\n\nGood morning, and in case I don’t see you,\n\n\nGood afternoon, Good evening, And good night.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHand-on EX03\n\n\n\nZHANG Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nHand-on Exercise 1\n\n\n\nChenbin Zhang\n\n\n\n\n\n\n\n\n\n\n\n\nHand-on_EX02\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nHands-on EX07\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nHands-on_Ex04\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nHands-on_Ex05\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nHands-on_Ex06\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\nIn-class EX02\n\n\n\nZHANG Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nIn-class Ex01\n\n\n\nChenbin Zhang\n\n\nApr 13, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nIn-class_EX04\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nIn-class_EX06\n\n\n\nZhnag Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nIn-class_Ex05\n\n\n\nZhang Chenbin\n\n\nMay 11, 2024\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\nTake-home Exercise 1\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home Exercise 3:Mini-Challenge 3\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home_Ex02\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Welcome to my page.\n\n\n\n\n\n\nGood morning, and in case I don’t see you,\n\n\nGood afternoon, Good evening, And good night.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHand-on EX03\n\n\n\nZHANG Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nHand-on Exercise 1\n\n\n\nChenbin Zhang\n\n\n\n\n\n\n\n\n\n\n\n\nHand-on_EX02\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nHands-on EX07\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nHands-on_Ex04\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nHands-on_Ex05\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nHands-on_Ex06\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\nIn-class EX02\n\n\n\nZHANG Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nIn-class Ex01\n\n\n\nChenbin Zhang\n\n\nApr 13, 2024\n\n\n\n\n\n\n\n\n\n\n\n\nIn-class_EX04\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nIn-class_EX06\n\n\n\nZhnag Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nIn-class_EX09\n\n\n\nZHANG Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nIn-class_Ex05\n\n\n\nZhang Chenbin\n\n\nMay 11, 2024\n\n\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n\n\n\nTake-home Exercise 1\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home Exercise 3:Mini-Challenge 3\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\n\n\n\n\nTake-home_Ex02\n\n\n\nZhang Chenbin\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "Take-home_Ex/Take-home_Ex02/Take-home_Ex02.html",
@@ -369,5 +369,12 @@
     "title": "Take-home Exercise 3:Mini-Challenge 3",
     "section": "Node",
     "text": "Node\n\n\nCode\nggplot(data = mc3_nodes, aes(x = type, fill = type)) +\n  geom_bar(stat = \"count\", width = 0.7) +  \n  theme_minimal() +  \n  theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 12), \n        plot.margin = margin(t = 10, r = 10, b = 20, l = 10, unit = \"pt\")) + \n  labs(x = \"Type\", y = \"Count\", fill = \"Type\") +  \n  scale_fill_brewer(palette = \"Set3\")  \n\n\n\n\n\n:::"
+  },
+  {
+    "objectID": "In-class_EX/In-class_EX09/In-class_EX09.html",
+    "href": "In-class_EX/In-class_EX09/In-class_EX09.html",
+    "title": "In-class_EX09",
+    "section": "",
+    "text": "pacman::p_load(corrplot, ggstatsplot, tidyverse)\n\n\nwine &lt;- read_csv(\"data/wine_quality.csv\")"
   }
 ]

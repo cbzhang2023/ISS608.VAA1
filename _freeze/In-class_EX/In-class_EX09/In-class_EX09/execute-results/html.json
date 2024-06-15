@@ -1,0 +1,14 @@
+{
+  "hash": "4079be8b6fb0055bfe81f1dd30d4c684",
+  "result": {
+    "markdown": "---\ntitle: \"In-class_EX09\"\nauthor: \"ZHANG Chenbin\"\nexecute: \n  eval: true\n  echo: true\n  warning: false\n  freeze: true\n---\n\n::: {.cell}\n\n```{.r .cell-code}\npacman::p_load(corrplot, ggstatsplot, tidyverse)\n```\n:::\n\n::: {.cell}\n\n```{.r .cell-code}\nwine <- read_csv(\"data/wine_quality.csv\")\n```\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

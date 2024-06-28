@@ -1,0 +1,291 @@
+---
+title: "Untitled"
+---
+```{r}
+pacman::p_load(jsonlite, tidygraph, ggraph, visNetwork, graphlayouts, ggforce, tidyr, dplyr,skimr, tidytext, tidyverse, scales, wordcloud, tm, treemap,lubridate,ggplot2,visNetwork,igraph,reshape2)
+```
+
+```{r}
+mc3_data <- fromJSON("mc3.json")
+mc3_edges <- as_tibble(mc3_data$link)
+mc3_nodes <- as_tibble(mc3_data$nodes)
+
+mc3_nodes_selected <- mc3_nodes %>%
+  select(node_type = type, node_id = id)
+
+# 创建 nodes_Person 表
+nodes_Person <- mc3_nodes_selected %>%
+  filter(node_type == "Entity.Person") %>%
+  mutate(style = "Person")
+
+# 创建 nodes_Company 表
+nodes_Company <- mc3_nodes_selected %>%
+  filter(node_type != "Entity.Person") %>%
+  mutate(style = "Company")
+```
+
+```{r}
+library(dplyr)
+mc3_nodes_selected <- mc3_nodes %>%
+  select(node_type = type, node_id = id)
+
+# 给每个数据框添加来源标识，并使用style列
+nodes_Person <- nodes_Person %>%
+  mutate(style = "Person")
+
+nodes_Company <- nodes_Company %>%
+  mutate(style = "Company")
+
+# 合并数据框
+node_file <- bind_rows(nodes_Person, nodes_Company)
+
+# 查看合并后的数据框
+print(node_file)
+
+```
+```{r}
+library(dplyr)
+
+# 给每个数据框添加来源标识，并使用style列
+nodes_Person <- nodes_Person %>%
+  mutate(style = "Person")
+
+nodes_Company <- nodes_Company %>%
+  mutate(style = "Company")
+
+# 合并数据框
+node_file <- bind_rows(nodes_Person, nodes_Company)
+
+# 创建 mc3_source_target 数据框
+
+mc3_edges <- as_tibble(mc3_data$link)
+mc3_edges_add <- mc3_edges %>%
+  mutate(
+    start_date = as.Date(start_date, format = "%Y-%m-%d"),
+    end_date = as.Date(ifelse(is.na(end_date), "2035-12-12", as.character(end_date)), format = "%Y-%m-%d")
+  ) %>%
+  filter(!is.na(start_date))
+mc3_edges_filt <- mc3_edges_add %>% select(type, source, target, start_date, end_date)
+mc3_source_target <- mc3_edges_filt %>% 
+  select(source, target)
+
+# 将 mc3_source_target 和 node_file 通过 source 进行左连接
+result <- mc3_source_target %>%
+  left_join(node_file, by = c("source" = "node_id"))
+
+# 删除包含任意 NA 值的行
+result <- result %>%
+  drop_na()
+
+# 查看结果数据框
+print(result)
+
+```
+
+
+
+```{r}
+mc3_edges <- as_tibble(mc3_data$link)
+all_end_dates_valid <- mc3_edges %>%
+  mutate(end_date_year = year(as_date(end_date))) %>%
+  summarise(all_valid = all(is.na(end_date) | end_date_year == 2035)) %>%
+  pull(all_valid)
+mc3_edges_add <- mc3_edges %>%
+  mutate(end_date = na_if(end_date, "NA")) %>%
+  mutate(operation = as.character(ifelse(is.na(end_date), 0, 1)))
+mc3_edges_filt <- mc3_edges_add %>% select(type, source, target, start_date, end_date, operation)
+# 继续建立一个新的表，选出source和target列
+mc3_source_target <- mc3_edges_filt %>% 
+  select(source, target)
+
+# 查看新建的数据框
+print(mc3_source_target)
+
+library(dplyr)
+
+# 给每个数据框添加来源标识，并使用style列
+nodes_Person <- nodes_Person %>%
+  mutate(style = "Person")
+
+nodes_Company <- nodes_Company %>%
+  mutate(style = "Company")
+
+# 合并数据框
+node_file <- bind_rows(nodes_Person, nodes_Company)
+
+# 创建 mc3_source_target 数据框
+mc3_source_target <- mc3_edges_filt %>% 
+  select(source, target)
+
+# 将 mc3_source_target 和 node_file 通过 source 进行左连接
+result <- mc3_source_target %>%
+  left_join(node_file, by = c("source" = "node_id"))
+
+# 删除包含任意 NA 值的行
+result <- result %>%
+  drop_na()
+
+# 查看结果数据框
+print(result)
+
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(visNetwork)
+
+# 递归函数来找出所有连接的 source
+find_connections <- function(target_name, result_df) {
+  connections <- c(target_name)
+  new_sources <- target_name
+  repeat {
+    new_targets <- result_df %>% 
+      filter(target %in% new_sources) %>% 
+      pull(source)
+    
+    if (length(new_targets) == 0) break
+    
+    new_sources <- setdiff(new_targets, connections)
+    connections <- unique(c(connections, new_sources))
+  }
+  connections
+}
+
+# 找出 SouthSeafood Express Corp 的关系网
+initial_target <- "SouthSeafood Express Corp"
+connections <- find_connections(initial_target, result)
+
+# 过滤出相关数据
+network_df <- result %>% 
+  filter(target %in% connections | source %in% connections)
+
+# 创建节点和边的数据框
+nodes <- network_df %>%
+  select(id = source, label = source, group = style) %>%
+  distinct() %>%
+  bind_rows(
+    network_df %>%
+      select(id = target, label = target, group = style) %>%
+      distinct()
+  ) %>%
+  distinct()
+
+edges <- network_df %>%
+  select(from = source, to = target)
+
+# 确保 nodes 中的 ID 是唯一的
+nodes <- nodes %>%
+  group_by(id) %>%
+  slice(1) %>%
+  ungroup()
+
+# 创建和显示网络图
+visNetwork(nodes, edges) %>%
+  visNodes(shape = "dot", size = 10) %>%
+  visGroups(groupname = "Person", color = list(background = "blue", border = "darkblue")) %>%
+  visGroups(groupname = "Company", color = list(background = "red", border = "darkred")) %>%
+  visEdges(arrows = "to") %>%
+  visLayout(randomSeed = 42)
+
+```
+
+
+```{r}
+library(dplyr)
+library(tidyr)
+library(visNetwork)
+library(htmlwidgets)
+
+# 递归函数来找出所有连接的 source
+find_connections <- function(target_name, result_df) {
+  connections <- c(target_name)
+  new_sources <- target_name
+  repeat {
+    new_targets <- result_df %>% 
+      filter(target %in% new_sources) %>% 
+      pull(source)
+    
+    if (length(new_targets) == 0) break
+    
+    new_sources <- setdiff(new_targets, connections)
+    connections <- unique(c(connections, new_sources))
+  }
+  connections
+}
+
+# 找出 SouthSeafood Express Corp 的关系网
+initial_target <- "SouthSeafood Express Corp"
+connections <- find_connections(initial_target, result)
+
+# 过滤出相关数据
+network_df <- result %>% 
+  filter(target %in% connections | source %in% connections)
+
+# 创建节点和边的数据框
+nodes <- network_df %>%
+  select(id = source, label = source, group = style) %>%
+  distinct() %>%
+  bind_rows(
+    network_df %>%
+      select(id = target, label = target, group = style) %>%
+      distinct()
+  ) %>%
+  distinct()
+
+edges <- network_df %>%
+  select(from = source, to = target)
+
+# 确保 nodes 中的 ID 是唯一的
+nodes <- nodes %>%
+  group_by(id) %>%
+  slice(1) %>%
+  ungroup()
+
+# 创建和显示网络图
+network_plot <- visNetwork(nodes, edges) %>%
+  visNodes(shape = "dot", size = 10) %>%
+  visGroups(groupname = "Person", color = list(background = "yellow", border = "orange")) %>%
+  visGroups(groupname = "Company", color = list(background = "lightblue", border = "blue")) %>%
+  visEdges(arrows = "to") %>%
+  visLayout(randomSeed = 42) %>%
+  visLegend(addNodes = list(
+    list(label = "Person", shape = "dot", color = list(background = "yellow", border = "orange")),
+    list(label = "Company", shape = "dot", color = list(background = "lightblue", border = "blue"))
+  ), useGroups = FALSE) %>%
+  visOptions(highlightNearest = TRUE)
+
+# 添加标题
+network_plot <- prependContent(network_plot, htmltools::tags$h2("SouthSeafood Express Corp Relationship Network"))
+
+# 显示网络图
+network_plot
+
+saveWidget(network_plot, file = "SouthSeafood_Express_Corp_Relationship_Network.html")
+
+```
+
+
+
+
+
+

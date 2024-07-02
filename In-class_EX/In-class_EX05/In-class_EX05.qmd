@@ -1,0 +1,56 @@
+---
+title: "In-class_EX05"
+---
+
+```{r}
+pacman::p_load(tidyverse, readtext,
+               quanteda, tidytext)
+```
+
+```{r}
+data_folder <- "MC1/articles"
+```
+
+```{r}
+text_data <- readtext(paste0("MC1/articles",
+                "/*"))
+```
+
+```{r}
+text_data <- readtext("MC1/articles")
+```
+
+```{r}
+usenet_words <- text_data %>%
+  unnest_tokens(word, text) %>%  #reading the text data
+  filter(str_detect(word, "[a-z']$"),
+         !word %in% stop_words$word) #remove stop words
+usenet_words %>%
+  count(word, sort = TRUE)
+```
+
+```{r}
+temp_table <- usenet_words %>%
+  count(word, sort = TRUE)
+```
+
+```{r}
+corpus_text <- corpus(text_data)
+summary(corpus_text, 5)
+```
+
+```{r}
+text_data_splitted <- text_data %>%
+  separate_wider_delim("doc_id",
+                       delim = "__0__",
+                       names = c("X", "Y"),
+                       too_few = "align_end")
+```
+
+```{r}
+pacman::p_load(jsonlite, tidyverse)
+```
+
+```{r}
+mc1_data <- fromJSON("MC1/mc1.json")
+```
